@@ -57,6 +57,16 @@ openclaw plugins inspect penny --runtime --json
 
 Open the login URL shown in your terminal and approve the Penny connection. Login uses an independent public OAuth client, PKCE S256, and a one-use callback on `127.0.0.1`. It does not borrow another Penny integration's credentials. Reconnect after changing OpenClaw profiles or Penny accounts.
 
+## Turn off the Memory Core dreaming sidecar
+
+OpenClaw can keep Memory Core's background dreaming active while another plugin owns memory. Penny does not replace that background job. Set this in your existing configuration and restart the gateway:
+
+```json
+{"plugins":{"entries":{"memory-core":{"config":{"dreaming":{"enabled":false}}}}}}
+```
+
+If dreaming is already running, use `/dreaming off` while Memory Core is still loaded, then check `/dreaming status` before removing Memory Core from your plugin allowlist. Disabling dreaming lets the host remove its managed sweep job. See [OpenClaw's dreaming guide](https://docs.openclaw.ai/concepts/dreaming). Penny creates no cron jobs.
+
 ## What it can remember
 
 - `penny_profile` reads your private core memory and persona.
