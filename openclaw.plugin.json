@@ -1,0 +1,41 @@
+{
+  "id": "penny",
+  "name": "Penny",
+  "description": "Private Penny memory with native recall and selected durable saves",
+  "version": "0.1.0",
+  "kind": "memory",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "agentId": {
+        "type": "string",
+        "default": "main",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "sessionKey": {
+        "type": "string",
+        "default": "agent:main:main",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "autoRecall": { "type": "boolean", "default": true },
+      "autoCapture": { "type": "boolean", "default": false },
+      "preCompactionSave": { "type": "boolean", "default": true }
+    }
+  },
+  "contracts": { "tools": ["penny_profile", "penny_search", "penny_remember"] },
+  "cli": ["penny"],
+  "uiHints": {
+    "autoCapture": {
+      "label": "Capture selected durable user facts",
+      "help": "Opt-in: sends short explicit remember/preference/decision statements to your private Penny notes after a successful owner turn."
+    },
+    "autoRecall": { "label": "Recall private memory before turns" },
+    "sessionKey": {
+      "label": "Approved owner main session",
+      "help": "Exact host session key. Cron, subagent, incognito, shared and sandboxed contexts are denied."
+    }
+  }
+}

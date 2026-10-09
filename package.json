@@ -1,0 +1,66 @@
+{
+  "name": "penny-openclaw",
+  "version": "0.1.0",
+  "description": "Penny private memory for OpenClaw",
+  "type": "module",
+  "license": "MIT",
+  "author": "HelperLabs",
+  "homepage": "https://mypenny.ai",
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=24.16.0 <25 || >=26.1.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "esbuild": "0.25.11",
+    "openclaw": "2026.10.1-beta.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "typebox": "1.3.34",
+    "@mypenny/core": "0.1.31"
+  },
+  "peerDependencies": {
+    "openclaw": "2026.10.1-beta.2"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ],
+    "compat": {
+      "pluginApi": "2026.10.1-beta.2",
+      "minGatewayVersion": "2026.10.1-beta.2"
+    },
+    "build": {
+      "openclawVersion": "2026.10.1-beta.2"
+    },
+    "catalog": {
+      "categories": [
+        "memory"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HelperLabs/penny-openclaw.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HelperLabs/penny-openclaw/issues"
+  }
+}
